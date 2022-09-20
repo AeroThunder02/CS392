@@ -1,0 +1,103 @@
+/*
+Name: mergesort.c
+Author: Maciej Kowalczyk
+Date: 2/16/22
+Pledge: I pledge my Honor that I have abided by the Stevens Honor System
+*/
+
+#include mergesort.h
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+/*
+Helper functions used in mergesort implementation.
+*/
+
+static void merge(void *array, int l, int r, size_t elem_sz, int (*comp) (const void*, const void*));
+
+/* 
+Function that takes two int void pointers and compares them.
+It returns an integer depending on their order:
+-  1 if first int is greater
+- -1 if second int is greater
+-  0 if both doubles are equal
+*/
+
+
+int int_cmp(const void *a, const void *b){
+	if(*(int *) a > *(int *) b){
+		return 1;
+        }
+	else if(*(int *) a < *(int *) b){
+		return -1;
+	}
+	return 0;
+}
+
+/*
+Function that takes two double void pointers and compares them.
+It returns an integer depending on their order
+-  1 if first double is greater
+- -1 if second double is greater
+-  0 if both doubles are equal
+*/
+
+int dbl_cmp(const void *a, const void *b){
+	if(*(double *) a > *(double *) b){
+		return 1;
+	}
+	else if(*(double *) a < *(double *) b){
+		return -1;
+	}
+	return 0;
+}
+
+
+void merge(void* array, int l, int m, int r, size_t elem_sz, int(*comp)(const void*, const void*)){
+	int i,j,k;
+	int n1 = m - l + 1;
+ 	int n2 = r - m;
+
+	int L[n1], R[n2];
+
+	for (i=0; i< n1; i++){
+		L[i] = arr[l + i];
+	}
+	for (j = 0; j < n2; j++){
+		R[j] = arr[m +1 + j];
+	}
+
+	i = 0;
+	j = 0;
+	k = l;
+	while (i < n1 && j < n2) {
+		if (L[i] <= R[j]){
+			arr[k] = L[i];
+			i++;
+		}
+		else {
+			arr{k] = R[j];
+			j++;
+		}
+	k++
+	}
+
+	while(i < n1) {
+		arr[k] = L[i];
+		i++;
+		k++;
+	}
+	while(j < n2) {
+		arr[k] = R[j];
+		j++;
+		k++;
+	}
+
+}
+
+void mergesort(void* array, size_t len, size_t elem_sz, int (*comp)(const void*, const void*)){
+	if (l<r) {
+		int m = l + (r - 1) / 2;
+		mergeSort(arr, 
+}
